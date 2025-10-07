@@ -4,6 +4,8 @@ Stealth browser extension for Moonshot Kimi K2: crosshair A→B screen capture, 
 
 API note: This extension assumes Moonshot Kimi’s Chat Completions API is OpenAI‑compatible at `https://api.moonshot.ai/v1/chat/completions`. If your account uses different endpoints/models, adjust them in Options.
 
+[Showcase-extension.webm](https://github.com/user-attachments/assets/48267b84-50c1-4ec9-9b67-7b6f1427b93e)
+
 
 ---
 
