@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Kimi K2 Stealth",
+  "version": "1.4.0",
+  "description": "Native menus + hotkeys to send selected text, clipboard text/image, hovered image, or A→B capture to Kimi K2. Auto-copies results.",
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "scripting",
+    "activeTab",
+    "clipboardRead",
+    "clipboardWrite",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://api.moonshot.ai/*",
+    "https://api-sg.moonshot.ai/*",
+    "https://api.moonshot.cn/*",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "128": "icon128.png"
+  }
+}

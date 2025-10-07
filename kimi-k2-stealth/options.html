@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Kimi K2 Stealth — Options</title>
+    <style>
+      body {
+        font: 14px -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
+        padding: 16px;
+        max-width: 880px;
+      }
+      fieldset {
+        margin: 12px 0;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 12px;
+      }
+      legend {
+        font-weight: 600;
+        padding: 0 6px;
+      }
+      label {
+        display: block;
+        margin-top: 8px;
+      }
+      input[type="text"],
+      input[type="number"],
+      textarea,
+      select {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .row3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+      }
+      .buttons {
+        margin-top: 12px;
+      }
+      button {
+        margin-right: 8px;
+      }
+      small.mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Kimi K2 Stealth — Options</h2>
+
+    <fieldset>
+      <legend>API</legend>
+      <label>
+        API Key
+        <input id="apiKey" type="text" placeholder="sk-..." />
+      </label>
+      <div class="row">
+        <label>
+          Base URL
+          <input id="baseUrl" type="text" value="https://api.moonshot.ai" />
+        </label>
+        <label>
+          Endpoint Path
+          <input id="endpointPath" type="text" value="/v1/chat/completions" />
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          Text Model
+          <input id="modelText" type="text" value="kimi-k2-0905-preview" />
+        </label>
+        <label>
+          Vision Model
+          <input
+            id="modelVision"
+            type="text"
+            value="moonshot-v1-128k-vision-preview"
+          />
+        </label>
+      </div>
+      <label>
+        Temperature
+        <input id="temperature" type="number" step="0.05" value="0.2" />
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Behavior</legend>
+      <div class="row3">
+        <label>
+          Language
+          <select id="language">
+            <option value="en-US">en-US</option>
+            <option value="es-ES">es-ES</option>
+          </select>
+        </label>
+        <label>
+          Mode
+          <select id="mode">
+            <option value="technical">technical</option>
+            <option value="student">student</option>
+            <option value="singleAnswer">singleAnswer</option>
+            <option value="shortAnswer">shortAnswer</option>
+          </select>
+        </label>
+        <label>
+          Output format
+          <select id="outputFormat">
+            <option value="plain">plain</option>
+            <option value="json">json</option>
+          </select>
+        </label>
+      </div>
+      <div class="row3">
+        <label>
+          Length
+          <select id="length">
+            <option value="short">short</option>
+            <option value="medium">medium</option>
+            <option value="long">long</option>
+            <option value="extraLong">extraLong</option>
+          </select>
+        </label>
+        <label>
+          Auto language detect
+          <select id="autoLangDetect">
+            <option value="true">true</option>
+            <option value="false">false</option>
+          </select>
+        </label>
+        <label>
+          Trim input
+          <select id="trimInput">
+            <option value="true">true</option>
+            <option value="false">false</option>
+          </select>
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          Max input chars
+          <input id="maxChars" type="number" value="1600" />
+        </label>
+        <label>
+          Auto-clear ms
+          <input id="autoClearMs" type="number" value="600000" />
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          Toaster enabled
+          <select id="toastsEnabled">
+            <option value="true">true</option>
+            <option value="false">false</option>
+          </select>
+        </label>
+        <label>
+          Debug logs
+          <select id="debug">
+            <option value="false">false</option>
+            <option value="true">true</option>
+          </select>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Images</legend>
+      <div class="row">
+        <label>
+          Max dimension
+          <input id="imgMaxDim" type="number" value="1600" />
+        </label>
+        <label>
+          JPEG quality (0.1–1)
+          <input id="jpegQuality" type="number" step="0.05" value="0.85" />
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Prompts</legend>
+      <label>
+        Selected text
+        <textarea id="p_sel" rows="2"></textarea>
+      </label>
+      <label>
+        Clipboard text
+        <textarea id="p_cliptext" rows="2"></textarea>
+      </label>
+      <label>
+        Input image
+        <textarea id="p_img" rows="2"></textarea>
+      </label>
+      <label>
+        Capture area
+        <textarea id="p_cap" rows="2"></textarea>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Hotkeys (page-captured)</legend>
+      <p>
+        Use strings like <span class="mono"><small>Ctrl+Shift+T</small></span>.
+        They’re handled by the content script so you can customize freely.
+      </p>
+      <div class="row">
+        <label>Selected text <input id="hk_sel" type="text" /></label>
+        <label>Clipboard text <input id="hk_cliptext" type="text" /></label>
+      </div>
+      <div class="row">
+        <label>Input image <input id="hk_img" type="text" /></label>
+        <label>Capture area <input id="hk_cap" type="text" /></label>
+      </div>
+      <div class="row">
+        <label>Paste output <input id="hk_paste" type="text" /></label>
+        <label>Copy output <input id="hk_copy" type="text" /></label>
+      </div>
+      <div class="row">
+        <label>Show output <input id="hk_show" type="text" /></label>
+        <span></span>
+      </div>
+    </fieldset>
+
+    <div class="buttons">
+      <button id="save">Save</button>
+      <button id="reset">Reset to defaults</button>
+      <span id="status" style="margin-left:8px;"></span>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>
